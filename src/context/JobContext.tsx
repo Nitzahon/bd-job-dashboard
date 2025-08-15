@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useReducer, ReactNode, useCallback, useMemo } from 'react';
+import React, { createContext, useContext, useEffect, useReducer, ReactNode, useCallback, useMemo, useRef } from 'react';
 import { Job, JobStatus, JobStatusCounts, JobTableFilters, JobTableSort, CreateJobRequest, ModalState, JobProgressUpdate } from '../types';
 import { JobServiceFactory } from '../services/jobServiceFactory';
 import { IJobService } from '../services/types';
@@ -121,6 +121,16 @@ export function JobProvider({ children }: JobProviderProps): React.ReactElement 
   const [jobService] = React.useState<IJobService>(() => JobServiceFactory.getInstance());
   const { addError } = useError();
   
+  // Keep track of job statuses to detect transitions to Running
+  const jobStatusesRef = useRef<Map<string, JobStatus>>(new Map());
+  
+  // Update the ref whenever jobs change
+  useEffect(() => {
+    state.jobs.forEach(job => {
+      jobStatusesRef.current.set(job.jobID, job.status);
+    });
+  }, [state.jobs]);
+  
   // Initialize jobs and setup real-time updates
   useEffect(() => {
     const initializeJobs = async () => {
@@ -137,7 +147,18 @@ export function JobProvider({ children }: JobProviderProps): React.ReactElement 
     initializeJobs();
 
     // Setup SignalR-like real-time updates
-    const unsubscribe = jobService.onProgressUpdate((update: JobProgressUpdate) => {
+    const unsubscribe = jobService.onProgressUpdate(async (update: JobProgressUpdate) => {
+      // Check if status changed to Running or to a completed state using our ref
+      const previousStatus = jobStatusesRef.current.get(update.jobID);
+      const statusChangedToRunning = previousStatus !== undefined && 
+        previousStatus !== JobStatus.Running && 
+        update.status === JobStatus.Running;
+      
+      const statusChangedToCompleted = previousStatus !== undefined &&
+        (previousStatus === JobStatus.Running || previousStatus === JobStatus.InQueue) &&
+        (update.status === JobStatus.Completed || update.status === JobStatus.Failed);
+
+      // Update with progress data first
       dispatch({
         type: 'UPDATE_JOB',
         payload: {
@@ -148,6 +169,32 @@ export function JobProvider({ children }: JobProviderProps): React.ReactElement 
           }
         }
       });
+
+      // Update our ref with the new status
+      jobStatusesRef.current.set(update.jobID, update.status);
+
+      // If status changed to Running or completed, fetch fresh job data to get timestamps
+      if (statusChangedToRunning || statusChangedToCompleted) {
+        try {
+          const freshJobs = await jobService.getJobs();
+          const updatedJob = freshJobs.find(job => job.jobID === update.jobID);
+          if (updatedJob) {
+            dispatch({
+              type: 'UPDATE_JOB',
+              payload: {
+                jobID: update.jobID,
+                updates: {
+                  startedAt: updatedJob.startedAt,
+                  completedAt: updatedJob.completedAt,
+                  errorMessage: updatedJob.errorMessage
+                }
+              }
+            });
+          }
+        } catch (error) {
+          console.error('Failed to fetch fresh job data:', error);
+        }
+      }
     });
 
     // Cleanup on unmount

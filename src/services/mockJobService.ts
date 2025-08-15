@@ -5,6 +5,7 @@ export class MockJobService {
   private jobs: Job[] = [];
   private progressUpdateCallbacks: ((update: JobProgressUpdate) => void)[] = [];
   private simulationIntervals: NodeJS.Timeout[] = [];
+  private isDestroyed: boolean = false;
 
   constructor() {
     this.initializeMockData();
@@ -117,7 +118,8 @@ export class MockJobService {
   }
 
   async disconnect(): Promise<void> {
-    // Clear all intervals
+    // Don't set isDestroyed to true - just clear intervals
+    // This allows the service to restart if needed
     this.simulationIntervals.forEach(interval => clearInterval(interval));
     this.simulationIntervals = [];
     
@@ -130,8 +132,17 @@ export class MockJobService {
   }
 
   private startProgressSimulation(): void {
+    // Don't start if already destroyed
+    if (this.isDestroyed) return;
+    
+    
+    // Clear any existing intervals first
+    this.simulationIntervals.forEach(interval => clearInterval(interval));
+    this.simulationIntervals = [];
+
     // Simulate running jobs progressing
     const progressInterval = setInterval(() => {
+      if (this.isDestroyed) return;
       const runningJobs = this.jobs.filter(job => job.status === JobStatus.Running);
       
       runningJobs.forEach(job => {
@@ -171,6 +182,7 @@ export class MockJobService {
 
     // Simulate pending jobs moving to queue and then running
     const queueInterval = setInterval(() => {
+      if (this.isDestroyed) return;
       const pendingJobs = this.jobs.filter(job => job.status === JobStatus.Pending);
       const inQueueJobs = this.jobs.filter(job => job.status === JobStatus.InQueue);
       
@@ -191,6 +203,13 @@ export class MockJobService {
     }, 3000);
 
     this.simulationIntervals.push(queueInterval);
+        
+    // Ensure intervals keep running (React StrictMode workaround)
+    setTimeout(() => {
+      if (!this.isDestroyed && this.simulationIntervals.length === 0) {
+        this.startProgressSimulation();
+      }
+    }, 2000); // Increased delay to give React time to settle
   }
 
   private simulateJobProgression(jobID: string): void {
@@ -220,6 +239,7 @@ export class MockJobService {
   }
 
   destroy(): void {
+    this.isDestroyed = true;
     this.simulationIntervals.forEach(interval => clearInterval(interval));
     this.simulationIntervals = [];
     this.progressUpdateCallbacks = [];
