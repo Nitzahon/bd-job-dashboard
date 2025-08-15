@@ -1,0 +1,63 @@
+@import '../../styles/ds/variables';
+@import '../../styles/ds/mixins';
+
+.root {
+  @include status-badge('pending');
+  
+  // Status variants
+  &.status--pending {
+    @include status-badge('pending');
+  }
+
+  &.status--inQueue {
+    @include status-badge('inQueue');
+  }
+
+  &.status--running {
+    @include status-badge('running');
+  }
+
+  &.status--completed {
+    @include status-badge('completed');
+  }
+
+  &.status--failed {
+    @include status-badge('failed');
+  }
+
+  &.status--stopped {
+    @include status-badge('stopped');
+  }
+  
+  // Size variants
+  &.size--sm {
+    padding: $spacing-1 $spacing-2;
+    font-size: 0.625rem; // 10px
+  }
+
+  &.size--lg {
+    padding: $spacing-2 $spacing-4;
+    font-size: $font-size-sm;
+  }
+  
+  // Style variants
+  &.variant--outlined {
+    background-color: transparent !important;
+    border: 1px solid currentColor;
+  }
+  
+  // With dot variant
+  &.withDot {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    
+    &::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: currentColor;
+    }
+  }
+}

@@ -1,0 +1,260 @@
+@import '../../../styles/ds/variables';
+@import '../../../styles/ds/mixins';
+
+// ============================================================================
+// Input Component Styles
+// ============================================================================
+
+.root {
+  @include input-base;
+  @include input-size('base');
+  
+  // Size variants
+  &.sm {
+    @include input-size('sm');
+  }
+  
+  &.lg {
+    @include input-size('lg');
+  }
+  
+  // State variants
+  &.error {
+    border-color: $color-border-error;
+    
+    &:focus {
+      border-color: $color-border-error;
+      box-shadow: 0 0 0 3px rgba($color-error-500, 0.1);
+    }
+  }
+  
+  &.success {
+    border-color: $color-success-500;
+    
+    &:focus {
+      border-color: $color-success-500;
+      box-shadow: 0 0 0 3px rgba($color-success-500, 0.1);
+    }
+  }
+}
+
+// Input group
+.inputGroup {
+  position: relative;
+  display: flex;
+  align-items: center;
+  
+  .root {
+    flex: 1;
+  }
+}
+
+.input-group__prefix,
+.input-group__suffix {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $color-text-tertiary;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+.input-group__prefix {
+  left: $spacing-3;
+  pointer-events: none;
+  
+  [dir="rtl"] & {
+    left: auto;
+    right: $spacing-3;
+  }
+  
+  ~ .root {
+    padding-left: calc(#{$spacing-8} + #{$spacing-2});
+    
+    [dir="rtl"] & {
+      padding-left: $spacing-3;
+      padding-right: calc(#{$spacing-8} + #{$spacing-2});
+    }
+  }
+}
+
+.input-group__suffix {
+  right: $spacing-3;
+  // Allow pointer events for interactive elements like buttons
+  pointer-events: auto;
+  
+  [dir="rtl"] & {
+    right: auto;
+    left: $spacing-3;
+  }
+  
+  ~ .root {
+    padding-right: calc(#{$spacing-8} + #{$spacing-2});
+    
+    [dir="rtl"] & {
+      padding-right: $spacing-3;
+      padding-left: calc(#{$spacing-8} + #{$spacing-2});
+    }
+  }
+}
+
+// Form field
+.formField {
+  width: 100%;
+  
+  &--fullWidth {
+    width: 100%;
+  }
+}
+
+// Label
+.label {
+  display: block;
+  margin-bottom: $spacing-2;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  
+  &--required::after {
+    content: ' *';
+    color: $color-error-500;
+  }
+}
+
+// Help text
+.helpText {
+  margin-top: $spacing-1;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  
+  &--error {
+    color: $color-error-600;
+  }
+  
+  &--success {
+    color: $color-success-600;
+  }
+}
+
+// Form field
+.formField {
+  margin-bottom: $spacing-4;
+  
+  &--fullWidth {
+    width: 100%;
+  }
+}
+
+// Textarea
+.textarea {
+  @include input-base;
+  resize: vertical;
+  min-height: 4rem;
+  padding: $spacing-3 $spacing-4;
+  line-height: $line-height-relaxed;
+  
+  &--error {
+    border-color: $color-border-error;
+    
+    &:focus {
+      border-color: $color-border-error;
+      box-shadow: 0 0 0 3px rgba($color-error-500, 0.1);
+    }
+  }
+  
+  &--success {
+    border-color: $color-success-500;
+    
+    &:focus {
+      border-color: $color-success-500;
+      box-shadow: 0 0 0 3px rgba($color-success-500, 0.1);
+    }
+  }
+}
+
+// Select
+.select {
+  @include input-base;
+  @include input-size('base');
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right $spacing-3 center;
+  background-size: 1rem;
+  padding-right: calc(#{$spacing-4} + #{$spacing-6});
+  appearance: none;
+  cursor: pointer;
+  
+  &::-ms-expand {
+    display: none;
+  }
+  
+  // Size variants
+  &--sm {
+    @include input-size('sm');
+    padding-right: calc(#{$spacing-3} + #{$spacing-6});
+  }
+  
+  &--lg {
+    @include input-size('lg');
+    padding-right: calc(#{$spacing-5} + #{$spacing-6});
+  }
+  
+  // State variants
+  &--error {
+    border-color: $color-border-error;
+    
+    &:focus {
+      border-color: $color-border-error;
+      box-shadow: 0 0 0 3px rgba($color-error-500, 0.1);
+    }
+  }
+  
+  &--success {
+    border-color: $color-success-500;
+    
+    &:focus {
+      border-color: $color-success-500;
+      box-shadow: 0 0 0 3px rgba($color-success-500, 0.1);
+    }
+  }
+}
+
+// RTL support
+[dir="rtl"] {
+  .prefix {
+    left: auto;
+    right: $spacing-3;
+    
+    ~ .root {
+      padding-left: $spacing-4;
+      padding-right: calc(#{$spacing-8} + #{$spacing-2});
+    }
+  }
+  
+  .suffix {
+    right: auto;
+    left: $spacing-3;
+    
+    ~ .root {
+      padding-right: $spacing-4;
+      padding-left: calc(#{$spacing-8} + #{$spacing-2});
+    }
+  }
+  
+  .select {
+    background-position: left $spacing-3 center;
+    padding-right: $spacing-4;
+    padding-left: calc(#{$spacing-4} + #{$spacing-6});
+    
+    &.sm {
+      padding-right: $spacing-3;
+      padding-left: calc(#{$spacing-3} + #{$spacing-6});
+    }
+    
+    &.lg {
+      padding-right: $spacing-5;
+      padding-left: calc(#{$spacing-5} + #{$spacing-6});
+    }
+  }
+}

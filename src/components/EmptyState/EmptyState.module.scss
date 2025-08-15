@@ -1,0 +1,61 @@
+@import '../../styles/ds/variables';
+@import '../../styles/ds/mixins';
+@import '../../styles/ds/spacing';
+@import '../../styles/ds/breakpoints';
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: $spacing-12 $spacing-6;
+  min-height: 320px;
+}
+
+.emptyIcon {
+  font-size: 48px;
+  margin-bottom: $spacing-4;
+  opacity: 0.6;
+}
+
+.emptyTitle {
+  margin-bottom: $spacing-2;
+  color: var(--color-text-primary);
+}
+
+.emptyDescription {
+  margin-bottom: $spacing-6;
+  max-width: 400px;
+}
+
+.emptyAction {
+  margin-top: $spacing-2;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .emptyState {
+    padding: $spacing-8 $spacing-4;
+    min-height: 280px;
+  }
+  
+  .emptyIcon {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .emptyState {
+    padding: $spacing-6 $spacing-3;
+    min-height: 240px;
+  }
+  
+  .emptyIcon {
+    font-size: 36px;
+  }
+  
+  .emptyDescription {
+    max-width: 300px;
+  }
+}

@@ -1,0 +1,138 @@
+@import '../../../styles/ds/variables';
+@import '../../../styles/ds/mixins';
+
+// ============================================================================
+// Text Component Styles
+// ============================================================================
+
+.root {
+  @include body-base;
+  margin: 0; // Reset default margins
+  
+  // Size variants
+  &.size-xs {
+    font-size: $font-size-xs;
+    line-height: $line-height-normal;
+  }
+  
+  &.size-sm {
+    @include body-small;
+  }
+  
+  &.size-base {
+    @include body-base;
+  }
+  
+  &.size-lg {
+    @include body-large;
+  }
+  
+  &.size-xl {
+    font-size: $font-size-xl;
+    line-height: $line-height-normal;
+  }
+  
+  &.size-2xl {
+    font-size: $font-size-2xl;
+    line-height: $line-height-tight;
+  }
+  
+  // Weight variants
+  &.weight-light {
+    font-weight: $font-weight-light;
+  }
+  
+  &.weight-regular {
+    font-weight: $font-weight-regular;
+  }
+  
+  &.weight-medium {
+    font-weight: $font-weight-medium;
+  }
+  
+  &.weight-semibold {
+    font-weight: $font-weight-semibold;
+  }
+  
+  &.weight-bold {
+    font-weight: $font-weight-bold;
+  }
+  
+  // Color variants
+  &.color-primary {
+    color: $color-text-primary;
+  }
+
+  &.color-secondary {
+    color: $color-text-secondary;
+  }
+  
+  &.color-tertiary {
+    color: $color-text-tertiary;
+  }
+
+  &.color-disabled {
+    color: $color-text-disabled;
+  }
+
+  &.color-inverse {
+    color: $color-text-inverse;
+  }
+  
+  &.color-success {
+    color: $color-success-600;
+  }
+  
+  &.color-warning {
+    color: $color-warning-600;
+  }
+  
+  &.color-error {
+    color: $color-error-600;
+  }
+  
+  &.color-info {
+    color: $color-info-600;
+  }
+  
+  // Style variants
+  &.uppercase {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  &.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  &.monospace {
+    font-family: $font-family-secondary;
+  }
+  
+  &.center {
+    text-align: center;
+  }
+  
+  &.right {
+    text-align: right;
+  }
+  
+  &.left {
+    text-align: left;
+  }
+}
+
+// RTL overrides
+[dir="rtl"] {
+  .root {
+    &.right {
+      text-align: left;
+    }
+    
+    &.left {
+      text-align: right;
+    }
+  }
+}

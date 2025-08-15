@@ -1,0 +1,147 @@
+@import '../../../styles/ds/variables';
+@import '../../../styles/ds/mixins';
+
+// ============================================================================
+// Card Component Styles
+// ============================================================================
+
+.root {
+//   @include card-base;
+//   @include card-padding('base');
+  
+  // Size variants
+  &.size--sm {
+    @include card-padding('sm');
+  }
+  
+  &.size--lg {
+    @include card-padding('lg');
+  }
+  
+  // Style variants
+  &.variant--elevated {
+    
+    &:hover {
+      transform: translateY(-1px);
+      transition: all $transition-fast;
+    }
+  }
+  
+  &.variant--bordered {
+    border: 2px solid $color-border-primary;
+    box-shadow: none;
+  }
+  
+  &.variant--flat {
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
+  }
+  
+  // Interactive variants
+  &.clickable {
+    cursor: pointer;
+    transition: all $transition-fast;
+    
+    &:hover {
+      transform: translateY(-1px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+      box-shadow: $shadow-sm;
+    }
+  }
+}
+
+// Card sub-components
+.header {
+  margin: -#{$spacing-6} -#{$spacing-6} $spacing-4 -#{$spacing-6};
+  padding: $spacing-4 $spacing-6;
+  border-bottom: 1px solid $color-border-primary;
+  background-color: $color-bg-secondary;
+  
+  .root.sm & {
+    margin: -#{$spacing-4} -#{$spacing-4} $spacing-3 -#{$spacing-4};
+    padding: $spacing-3 $spacing-4;
+  }
+  
+  .root.lg & {
+    margin: -#{$spacing-8} -#{$spacing-8} $spacing-6 -#{$spacing-8};
+    padding: $spacing-6 $spacing-8;
+  }
+}
+
+.footer {
+  margin: $spacing-4 -#{$spacing-6} -#{$spacing-6} -#{$spacing-6};
+  padding: $spacing-4 $spacing-6;
+  border-top: 1px solid $color-border-primary;
+  background-color: $color-bg-secondary;
+  
+  .root.sm & {
+    margin: $spacing-3 -#{$spacing-4} -#{$spacing-4} -#{$spacing-4};
+    padding: $spacing-3 $spacing-4;
+  }
+  
+  .root.lg & {
+    margin: $spacing-6 -#{$spacing-8} -#{$spacing-8} -#{$spacing-8};
+    padding: $spacing-6 $spacing-8;
+  }
+}
+
+.title {
+  @include heading-4;
+  margin-bottom: $spacing-2;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.subtitle {
+  @include body-small;
+  margin-bottom: $spacing-1;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.body {
+  flex: 1;
+}
+
+.actions {
+  display: flex;
+  gap: $spacing-2;
+  margin-top: $spacing-4;
+  
+  &.start {
+    justify-content: flex-start;
+  }
+  
+  &.center {
+    justify-content: center;
+  }
+  
+  &.end {
+    justify-content: flex-end;
+  }
+  
+  &.between {
+    justify-content: space-between;
+  }
+}
+
+// RTL support
+[dir="rtl"] {
+  .actions {
+    &.start {
+      justify-content: flex-end;
+    }
+    
+    &.end {
+      justify-content: flex-start;
+    }
+  }
+}

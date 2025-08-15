@@ -1,0 +1,14 @@
+// ============================================================================
+// Main SCSS Entry Point - Base Styles Only
+// ============================================================================
+
+// Import order is important for proper cascade
+
+// 1. Abstract files (variables, mixins, functions)
+@import './ds/variables';
+@import './ds/mixins';
+
+// 2. Base styles (reset, typography, etc.)
+@import './base/reset';
+@import './base/typography';
+@import './base/global';

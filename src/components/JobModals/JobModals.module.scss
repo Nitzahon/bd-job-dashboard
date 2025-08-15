@@ -1,0 +1,65 @@
+@import '../../styles/ds/variables';
+@import '../../styles/ds/mixins';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-4;
+  z-index: 1000;
+}
+
+.modal {
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: $border-radius-xl;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-6;
+  border-bottom: 1px solid #e2e8f0;
+  background-color: white;
+  
+  h2 {
+    margin: 0;
+    color: #1e293b;
+    font-weight: 600;
+  }
+}
+
+.content {
+  flex: 1;
+  padding: $spacing-6;
+  min-height: 120px;
+}
+
+.formGroup {
+  margin-bottom: $spacing-5;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: $spacing-3;
+  padding: $spacing-6;
+  border-top: 1px solid $color-secondary-200;
+}

@@ -1,0 +1,106 @@
+// ============================================================================
+// Typography
+// ============================================================================
+
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+// Base typography
+body {
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-normal;
+  color: $color-text-primary;
+  background-color: $color-bg-primary;
+}
+
+// Heading styles
+h1 {
+  @include heading-1;
+}
+
+h2 {
+  @include heading-2;
+}
+
+h3 {
+  @include heading-3;
+}
+
+h4 {
+  @include heading-4;
+}
+
+h5,
+h6 {
+  @include body-large;
+  font-weight: $font-weight-semibold;
+}
+
+// Paragraph styles
+p {
+  @include body-base;
+  margin-bottom: $spacing-4;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Small text
+small {
+  @include body-small;
+}
+
+// Code styles
+code,
+kbd,
+samp,
+pre {
+  font-family: $font-family-secondary;
+  font-size: $font-size-sm;
+}
+
+// Strong and emphasis
+strong,
+b {
+  font-weight: $font-weight-semibold;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+// Links
+a {
+  color: $color-primary-600;
+  text-decoration: none;
+  transition: color $transition-fast;
+  
+  &:hover {
+    color: $color-primary-700;
+    text-decoration: underline;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid $color-primary-500;
+    outline-offset: 2px;
+    border-radius: $border-radius-sm;
+  }
+}
+
+// RTL Typography
+[dir="rtl"] {
+  text-align: right;
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-align: right;
+  }
+}

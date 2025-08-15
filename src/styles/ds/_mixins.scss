@@ -1,0 +1,461 @@
+// ============================================================================
+// Mixins for Reusable Patterns
+// ============================================================================
+
+// =============
+// Typography Mixins
+// =============
+
+@mixin heading-1 {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: $color-text-primary;
+}
+
+@mixin heading-2 {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+  color: $color-text-primary;
+}
+
+@mixin heading-3 {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-normal;
+  color: $color-text-primary;
+}
+
+@mixin heading-4 {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+  color: $color-text-primary;
+}
+
+@mixin body-large {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-relaxed;
+  color: $color-text-primary;
+}
+
+@mixin body-base {
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-normal;
+  color: $color-text-primary;
+}
+
+@mixin body-small {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-normal;
+  color: $color-text-secondary;
+}
+
+@mixin caption {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+  color: $color-text-tertiary;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+// =============
+// Button Mixins
+// =============
+
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-2;
+  border: 1px solid transparent;
+  border-radius: $border-radius-md;
+  font-weight: $font-weight-medium;
+  text-decoration: none;
+  transition: all $transition-fast;
+  cursor: pointer;
+  outline: none;
+  
+  &:focus-visible {
+    outline: 2px solid $color-border-focus;
+    outline-offset: 2px;
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-size($size) {
+  @if $size == 'xs' {
+    height: 1.5rem; // 24px - smaller than sm
+    padding: 0 $spacing-2;
+    font-size: $font-size-xs;
+  } @else if $size == 'sm' {
+    height: $button-height-sm;
+    padding: 0 $spacing-3;
+    font-size: $font-size-sm;
+  } @else if $size == 'base' {
+    height: $button-height-base;
+    padding: 0 $spacing-4;
+    font-size: $font-size-base;
+  } @else if $size == 'lg' {
+    height: $button-height-lg;
+    padding: 0 $spacing-6;
+    font-size: $font-size-lg;
+  }
+}
+
+@mixin button-variant($variant) {
+  @if $variant == 'primary' {
+    background-color: $color-primary-600;
+    color: $color-white;
+    
+    &:hover:not(:disabled) {
+      background-color: $color-primary-700;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: $color-primary-800;
+    }
+  } @else if $variant == 'secondary' {
+    background-color: $color-gray-800;
+    color: $color-white;
+    border-color: $color-gray-800;
+    
+    &:hover:not(:disabled) {
+      background-color: $color-gray-900;
+      border-color: $color-gray-900;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: $color-gray-700;
+    }
+  } @else if $variant == 'ghost' {
+    background-color: transparent;
+    color: $color-gray-600;
+    
+    &:hover:not(:disabled) {
+      background-color: $color-gray-100;
+      color: $color-gray-700;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: $color-gray-200;
+    }
+  } @else if $variant == 'danger' {
+    background-color: $color-error-600;
+    color: $color-white;
+    
+    &:hover:not(:disabled) {
+      background-color: $color-error-700;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: $color-error-800;
+    }
+  } @else if $variant == 'warning' {
+    background-color: #f97316;
+    color: $color-white;
+    
+    &:hover:not(:disabled) {
+      background-color: #ea580c;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: #c2410c;
+    }
+  } @else if $variant == 'outline' {
+    background-color: transparent;
+    color: $color-primary-600;
+    border: 1px solid $color-primary-600;
+    
+    &:hover:not(:disabled) {
+      background-color: $color-primary-50;
+      border-color: $color-primary-700;
+      color: $color-primary-700;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: $color-primary-100;
+      border-color: $color-primary-800;
+      color: $color-primary-800;
+    }
+  }
+}
+
+// =============
+// Card Mixins
+// =============
+
+@mixin card-base {
+  background-color: $color-white;
+  border: 1px solid $color-border-primary;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+}
+
+@mixin card-padding($size: 'base') {
+  @if $size == 'sm' {
+    padding: $spacing-4;
+  } @else if $size == 'base' {
+    padding: $spacing-6;
+  } @else if $size == 'lg' {
+    padding: $spacing-8;
+  }
+}
+
+// =============
+// Form Mixins
+// =============
+
+@mixin input-base {
+  display: block;
+  width: 100%;
+  border: 1px solid $color-border-primary;
+  border-radius: $border-radius-md;
+  background-color: $color-white;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  transition: all $transition-fast;
+  
+  &::placeholder {
+    color: $color-text-tertiary;
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: $color-border-focus;
+    box-shadow: 0 0 0 3px rgba($color-primary-500, 0.1);
+  }
+  
+  &:disabled {
+    background-color: $color-bg-tertiary;
+    color: $color-text-disabled;
+    cursor: not-allowed;
+  }
+  
+  &.error {
+    border-color: $color-border-error;
+    
+    &:focus {
+      border-color: $color-border-error;
+      box-shadow: 0 0 0 3px rgba($color-error-500, 0.1);
+    }
+  }
+}
+
+@mixin input-size($size) {
+  @if $size == 'sm' {
+    height: $input-height-sm;
+    padding: 0 $spacing-3;
+    font-size: $font-size-sm;
+  } @else if $size == 'base' {
+    height: $input-height-base;
+    padding: 0 $spacing-4;
+    font-size: $font-size-base;
+  } @else if $size == 'lg' {
+    height: $input-height-lg;
+    padding: 0 $spacing-5;
+    font-size: $font-size-lg;
+  }
+}
+
+// =============
+// Layout Mixins
+// =============
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin container($max-width: $breakpoint-xl) {
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 $spacing-4;
+  
+  @media (min-width: $breakpoint-sm) {
+    padding: 0 $spacing-6;
+  }
+  
+  @media (min-width: $breakpoint-lg) {
+    padding: 0 $spacing-8;
+  }
+}
+
+// =============
+// RTL Support Mixins
+// =============
+
+@mixin rtl-margin($property, $value) {
+  #{$property}: $value;
+  
+  [dir="rtl"] & {
+    @if $property == 'margin-left' {
+      margin-left: unset;
+      margin-right: $value;
+    } @else if $property == 'margin-right' {
+      margin-right: unset;
+      margin-left: $value;
+    }
+  }
+}
+
+@mixin rtl-padding($property, $value) {
+  #{$property}: $value;
+  
+  [dir="rtl"] & {
+    @if $property == 'padding-left' {
+      padding-left: unset;
+      padding-right: $value;
+    } @else if $property == 'padding-right' {
+      padding-right: unset;
+      padding-left: $value;
+    }
+  }
+}
+
+@mixin rtl-transform($transform) {
+  transform: $transform;
+  
+  [dir="rtl"] & {
+    transform: $transform scaleX(-1);
+  }
+}
+
+// =============
+// Status Badge Mixins
+// =============
+
+@mixin status-badge($status) {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-1 $spacing-3;
+  border-radius: $border-radius-base;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  text-transform: capitalize;
+  letter-spacing: 0.05em;
+  
+  @if $status == 'pending' {
+    background-color: rgba($color-status-pending, 0.1);
+    color: $color-status-pending;
+  } @else if $status == 'running' {
+    background-color: rgba($color-status-running, 0.1);
+    color: $color-status-running;
+  } @else if $status == 'completed' {
+    background-color: rgba($color-status-completed, 0.1);
+    color: $color-status-completed;
+  } @else if $status == 'failed' {
+    background-color: rgba($color-status-failed, 0.1);
+    color: $color-status-failed;
+  } @else if $status == 'inQueue' {
+    background-color: rgba($color-card-in-queue, 0.1);
+    color: $color-card-in-queue;
+  } @else if $status == 'stopped' {
+    background-color: rgba($color-card-stopped, 0.1);
+    color: $color-card-stopped;
+  }
+}
+
+// =============
+// Animation Mixins
+// =============
+
+@mixin fade-in {
+  animation: fadeIn $transition-base ease-in-out;
+}
+
+@mixin slide-up {
+  animation: slideUp $transition-slow ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY($spacing-4);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// =============
+// Responsive Mixins
+// =============
+
+@mixin media-sm {
+  @media (min-width: #{$breakpoint-sm}) {
+    @content;
+  }
+}
+
+@mixin media-md {
+  @media (min-width: #{$breakpoint-md}) {
+    @content;
+  }
+}
+
+@mixin media-lg {
+  @media (min-width: #{$breakpoint-lg}) {
+    @content;
+  }
+}
+
+@mixin media-xl {
+  @media (min-width: #{$breakpoint-xl}) {
+    @content;
+  }
+}
+
+@mixin media-xxl {
+  @media (min-width: #{$breakpoint-xxl}) {
+    @content;
+  }
+}
+
+// Responsive Breakpoint Mixin (for component usage)
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (min-width: #{$breakpoint-sm}) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media (min-width: #{$breakpoint-md}) {
+      @content;
+    }
+  } @else if $breakpoint == desktop {
+    @media (min-width: #{$breakpoint-lg}) {
+      @content;
+    }
+  } @else if $breakpoint == wide {
+    @media (min-width: #{$breakpoint-xl}) {
+      @content;
+    }
+  }
+}

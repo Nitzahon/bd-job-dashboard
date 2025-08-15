@@ -1,0 +1,100 @@
+// Import only the abstracts we need
+@import '../../../styles/ds/variables';
+@import '../../../styles/ds/mixins';
+
+// ============================================================================
+// Button Component Styles
+// ============================================================================
+
+.root {
+  @include button-base;
+  @include button-size('base');
+  @include button-variant('primary');
+  
+  // Size variants
+  &.xs {
+    @include button-size('xs');
+  }
+  
+  &.sm {
+    @include button-size('sm');
+  }
+  
+  &.lg {
+    @include button-size('lg');
+  }
+  
+  // Style variants
+  &.primary {
+    @include button-variant('primary');
+  }
+  
+  &.secondary {
+    @include button-variant('secondary');
+  }
+  
+  &.ghost {
+    @include button-variant('ghost');
+  }
+  
+  &.danger {
+    @include button-variant('danger');
+  }
+  
+  &.warning {
+    @include button-variant('warning');
+  }
+  
+  &.outline {
+    @include button-variant('outline');
+  }
+  
+  // State modifiers
+  &.loading {
+    position: relative;
+    color: transparent !important;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid currentColor;
+      border-top: 2px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      color: inherit;
+    }
+  }
+  
+  &.fullWidth {
+    width: 100%;
+  }
+  
+  // Icon buttons
+  &.iconOnly {
+    aspect-ratio: 1;
+    padding: 0;
+    
+    &.xs {
+      width: 1.75rem;
+    }
+    
+    &.sm {
+      width: $button-height-sm;
+    }
+    
+    &.lg {
+      width: $button-height-lg;
+    }
+  }
+}
+
+// Animations
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

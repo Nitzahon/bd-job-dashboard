@@ -1,0 +1,257 @@
+// ============================================================================
+// Color Variables
+// ============================================================================
+
+// =============
+// Color Palette
+// =============
+
+// Primary Colors
+$color-primary-50: #f0f9ff;
+$color-primary-100: #e0f2fe;
+$color-primary-200: #bae6fd;
+$color-primary-300: #7dd3fc;
+$color-primary-400: #38bdf8;
+$color-primary-500: #0ea5e9;
+$color-primary-600: #0284c7;
+$color-primary-700: #0369a1;
+$color-primary-800: #075985;
+$color-primary-900: #0c4a6e;
+
+// Secondary Colors
+$color-secondary-50: #f8fafc;
+$color-secondary-100: #f1f5f9;
+$color-secondary-200: #e2e8f0;
+$color-secondary-300: #cbd5e1;
+$color-secondary-400: #94a3b8;
+$color-secondary-500: #64748b;
+$color-secondary-600: #475569;
+$color-secondary-700: #334155;
+$color-secondary-800: #1e293b;
+$color-secondary-900: #0f172a;
+
+// Status Colors
+$color-success-50: #f0fdf4;
+$color-success-100: #dcfce7;
+$color-success-200: #bbf7d0;
+$color-success-300: #86efac;
+$color-success-400: #4ade80;
+$color-success-500: #22c55e;
+$color-success-600: #16a34a;
+$color-success-700: #15803d;
+$color-success-800: #166534;
+$color-success-900: #14532d;
+
+$color-warning-50: #fffbeb;
+$color-warning-100: #fef3c7;
+$color-warning-200: #fde68a;
+$color-warning-300: #fcd34d;
+$color-warning-400: #fbbf24;
+$color-warning-500: #f59e0b;
+$color-warning-600: #d97706;
+$color-warning-700: #b45309;
+$color-warning-800: #92400e;
+$color-warning-900: #78350f;
+
+$color-error-50: #fef2f2;
+$color-error-100: #fee2e2;
+$color-error-200: #fecaca;
+$color-error-300: #fca5a5;
+$color-error-400: #f87171;
+$color-error-500: #ef4444;
+$color-error-600: #dc2626;
+$color-error-700: #b91c1c;
+$color-error-800: #991b1b;
+$color-error-900: #7f1d1d;
+
+$color-info-50: #eff6ff;
+$color-info-100: #dbeafe;
+$color-info-200: #bfdbfe;
+$color-info-300: #93c5fd;
+$color-info-400: #60a5fa;
+$color-info-500: #3b82f6;
+$color-info-600: #2563eb;
+$color-info-700: #1d4ed8;
+$color-info-800: #1e40af;
+$color-info-900: #1e3a8a;
+
+// Neutral Colors
+$color-white: #ffffff;
+$color-black: #000000;
+$color-gray-50: #f9fafb;
+$color-gray-100: #f3f4f6;
+$color-gray-200: #e5e7eb;
+$color-gray-300: #d1d5db;
+$color-gray-400: #9ca3af;
+$color-gray-500: #6b7280;
+$color-gray-600: #4b5563;
+$color-gray-700: #374151;
+$color-gray-800: #2d3e50;
+$color-gray-900: #111827;
+
+$color-black: black;
+
+$color-white: white;
+
+$color-transparent: transparent;
+
+// Job Status Colors
+$color-status-pending: $color-warning-500;
+$color-status-running: $color-info-500;
+$color-status-completed: $color-success-500;
+$color-status-failed: $color-error-500;
+$color-status-cancelled: $color-gray-500;
+$color-status-paused: $color-secondary-500;
+
+// Status Card Colors (for dashboard cards)
+$color-card-pending: #f97316;     // Orange
+$color-card-in-queue: #a855f7;    // Purple  
+$color-card-running: #3a97d4;     // Blue
+$color-card-completed: #2dcd73;   // Green
+$color-card-failed: #d75346;      // Red
+$color-card-stopped: #98a4a4;     // Gray
+
+// =============
+// Semantic Color Tokens
+// =============
+
+$color-text-primary: $color-gray-700;
+$color-text-secondary: $color-gray-400;
+$color-text-tertiary: $color-gray-500;
+$color-text-disabled: $color-gray-400;
+$color-text-inverse: $color-white;
+
+$color-bg-primary: $color-white;
+$color-bg-secondary: $color-gray-50;
+$color-bg-tertiary: $color-gray-100;
+$color-bg-inverse: $color-gray-900;
+
+$color-border-primary: $color-gray-200;
+$color-border-secondary: $color-gray-300;
+$color-border-focus: $color-primary-500;
+$color-border-error: $color-error-500;
+
+$color-background: #ecf0f1;
+
+:export {
+  // Primary Colors
+  COLOR_PRIMARY_50: $color-primary-50;
+  COLOR_PRIMARY_100: $color-primary-100;
+  COLOR_PRIMARY_200: $color-primary-200;
+  COLOR_PRIMARY_300: $color-primary-300;
+  COLOR_PRIMARY_400: $color-primary-400;
+  COLOR_PRIMARY_500: $color-primary-500;
+  COLOR_PRIMARY_600: $color-primary-600;
+  COLOR_PRIMARY_700: $color-primary-700;
+  COLOR_PRIMARY_800: $color-primary-800;
+  COLOR_PRIMARY_900: $color-primary-900;
+
+  // Secondary Colors
+  COLOR_SECONDARY_50: $color-secondary-50;
+  COLOR_SECONDARY_100: $color-secondary-100;
+  COLOR_SECONDARY_200: $color-secondary-200;
+  COLOR_SECONDARY_300: $color-secondary-300;
+  COLOR_SECONDARY_400: $color-secondary-400;
+  COLOR_SECONDARY_500: $color-secondary-500;
+  COLOR_SECONDARY_600: $color-secondary-600;
+  COLOR_SECONDARY_700: $color-secondary-700;
+  COLOR_SECONDARY_800: $color-secondary-800;
+  COLOR_SECONDARY_900: $color-secondary-900;
+
+  // Status Colors
+  COLOR_SUCCESS_50: $color-success-50;
+  COLOR_SUCCESS_100: $color-success-100;
+  COLOR_SUCCESS_200: $color-success-200;
+  COLOR_SUCCESS_300: $color-success-300;
+  COLOR_SUCCESS_400: $color-success-400;
+  COLOR_SUCCESS_500: $color-success-500;
+  COLOR_SUCCESS_600: $color-success-600;
+  COLOR_SUCCESS_700: $color-success-700;
+  COLOR_SUCCESS_800: $color-success-800;
+  COLOR_SUCCESS_900: $color-success-900;
+
+  COLOR_WARNING_50: $color-warning-50;
+  COLOR_WARNING_100: $color-warning-100;
+  COLOR_WARNING_200: $color-warning-200;
+  COLOR_WARNING_300: $color-warning-300;
+  COLOR_WARNING_400: $color-warning-400;
+  COLOR_WARNING_500: $color-warning-500;
+  COLOR_WARNING_600: $color-warning-600;
+  COLOR_WARNING_700: $color-warning-700;
+  COLOR_WARNING_800: $color-warning-800;
+  COLOR_WARNING_900: $color-warning-900;
+
+  COLOR_ERROR_50: $color-error-50;
+  COLOR_ERROR_100: $color-error-100;
+  COLOR_ERROR_200: $color-error-200;
+  COLOR_ERROR_300: $color-error-300;
+  COLOR_ERROR_400: $color-error-400;
+  COLOR_ERROR_500: $color-error-500;
+  COLOR_ERROR_600: $color-error-600;
+  COLOR_ERROR_700: $color-error-700;
+  COLOR_ERROR_800: $color-error-800;
+  COLOR_ERROR_900: $color-error-900;
+
+  COLOR_INFO_50: $color-info-50;
+  COLOR_INFO_100: $color-info-100;
+  COLOR_INFO_200: $color-info-200;
+  COLOR_INFO_300: $color-info-300;
+  COLOR_INFO_400: $color-info-400;
+  COLOR_INFO_500: $color-info-500;
+  COLOR_INFO_600: $color-info-600;
+  COLOR_INFO_700: $color-info-700;
+  COLOR_INFO_800: $color-info-800;
+  COLOR_INFO_900: $color-info-900;
+
+  // Neutral Colors
+  COLOR_WHITE: $color-white;
+  COLOR_BLACK: $color-black;
+  COLOR_GRAY_50: $color-gray-50;
+  COLOR_GRAY_100: $color-gray-100;
+  COLOR_GRAY_200: $color-gray-200;
+  COLOR_GRAY_300: $color-gray-300;
+  COLOR_GRAY_400: $color-gray-400;
+  COLOR_GRAY_500: $color-gray-500;
+  COLOR_GRAY_600: $color-gray-600;
+  COLOR_GRAY_700: $color-gray-700;
+  COLOR_GRAY_800: $color-gray-800;
+  COLOR_GRAY_900: $color-gray-900;
+
+  // Job Status Colors
+  COLOR_STATUS_PENDING: $color-status-pending;
+  COLOR_STATUS_RUNNING: $color-status-running;
+  COLOR_STATUS_COMPLETED: $color-status-completed;
+  COLOR_STATUS_FAILED: $color-status-failed;
+  COLOR_STATUS_CANCELLED: $color-status-cancelled;
+  COLOR_STATUS_PAUSED: $color-status-paused;
+
+  // Status Card Colors
+  COLOR_CARD_PENDING: $color-card-pending;
+  COLOR_CARD_IN_QUEUE: $color-card-in-queue;
+  COLOR_CARD_RUNNING: $color-card-running;
+  COLOR_CARD_COMPLETED: $color-card-completed;
+  COLOR_CARD_FAILED: $color-card-failed;
+  COLOR_CARD_STOPPED: $color-card-stopped;
+
+  // Semantic Color Tokens
+  COLOR_TEXT_PRIMARY: $color-text-primary;
+  COLOR_TEXT_SECONDARY: $color-text-secondary;
+  COLOR_TEXT_TERTIARY: $color-text-tertiary;
+  COLOR_TEXT_DISABLED: $color-text-disabled;
+  COLOR_TEXT_INVERSE: $color-text-inverse;
+
+  COLOR_BG_PRIMARY: $color-bg-primary;
+  COLOR_BG_SECONDARY: $color-bg-secondary;
+  COLOR_BG_TERTIARY: $color-bg-tertiary;
+  COLOR_BG_INVERSE: $color-bg-inverse;
+
+  COLOR_BORDER_PRIMARY: $color-border-primary;
+  COLOR_BORDER_SECONDARY: $color-border-secondary;
+  COLOR_BORDER_FOCUS: $color-border-focus;
+  COLOR_BORDER_ERROR: $color-border-error;
+
+  COLOR_BLACK: $color-black;
+  COLOR_WHITE: $color-white;
+  COLOR_TRANSPARENT: $color-transparent;
+  COLOR_BACKGROUND: $color-background;
+}

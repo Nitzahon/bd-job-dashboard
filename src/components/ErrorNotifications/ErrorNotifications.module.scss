@@ -1,0 +1,166 @@
+@import '../../styles/ds/variables';
+@import '../../styles/ds/mixins';
+
+.container {
+  position: fixed;
+  top: $spacing-4;
+  z-index: $z-index-modal + 10;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+  max-width: 400px;
+  pointer-events: none;
+
+  &.ltr {
+    right: $spacing-4;
+  }
+
+  &.rtl {
+    left: $spacing-4;
+  }
+}
+
+.notification {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-3;
+  padding: $spacing-4;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-lg;
+  background: $color-bg-primary;
+  pointer-events: auto;
+
+  .ltr & {
+    border-left: 4px solid;
+    animation: slideInLTR 0.3s ease-out;
+  }
+
+  .rtl & {
+    border-right: 4px solid;
+    animation: slideInRTL 0.3s ease-out;
+  }
+}
+
+.apiError {
+  background: rgba($color-warning-100, 0.95);
+
+  .ltr & {
+    border-left-color: $color-warning-500;
+  }
+
+  .rtl & {
+    border-right-color: $color-warning-500;
+  }
+}
+
+.signalrError {
+  background: rgba($color-error-100, 0.95);
+
+  .ltr & {
+    border-left-color: $color-error-500;
+  }
+
+  .rtl & {
+    border-right-color: $color-error-500;
+  }
+}
+
+.networkError {
+  background: rgba($color-info-100, 0.95);
+
+  .ltr & {
+    border-left-color: $color-info-500;
+  }
+
+  .rtl & {
+    border-right-color: $color-info-500;
+  }
+}
+
+.content {
+  flex: 1;
+}
+
+.title {
+  display: block;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  margin-bottom: $spacing-1;
+}
+
+.message {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.retryCount {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin: $spacing-1 0 0 0;
+  font-style: italic;
+}
+
+.actions {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-2;
+}
+
+.actionButton {
+  white-space: nowrap;
+}
+
+.retryButton {
+  white-space: nowrap;
+}
+
+.closeButton {
+  min-width: auto;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-lg;
+  line-height: 1;
+  color: $color-text-tertiary;
+  
+  &:hover {
+    color: $color-text-primary;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLTR {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRTL {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

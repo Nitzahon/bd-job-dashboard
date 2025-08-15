@@ -1,0 +1,169 @@
+// ============================================================================
+// Global Styles
+// ============================================================================
+
+// Root element
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// App container
+.app {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+// Main content area
+.main-content {
+  flex: 1;
+  padding: $spacing-6;
+  background-color: $color-bg-secondary;
+  
+  @include media-sm {
+    padding: $spacing-8;
+  }
+}
+
+// Page container
+.page-container {
+  @include container;
+}
+
+// Loading states
+.loading {
+  @include flex-center;
+  padding: $spacing-8;
+  color: $color-text-secondary;
+}
+
+.loading-spinner {
+  width: $spacing-6;
+  height: $spacing-6;
+  border: 2px solid $color-gray-200;
+  border-top: 2px solid $color-primary-500;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// Error states
+.error-state {
+  @include flex-center;
+  flex-direction: column;
+  gap: $spacing-4;
+  padding: $spacing-8;
+  text-align: center;
+  color: $color-text-secondary;
+}
+
+// Empty states
+.empty-state {
+  @include flex-center;
+  flex-direction: column;
+  gap: $spacing-4;
+  padding: $spacing-12 $spacing-6;
+  text-align: center;
+  color: $color-text-secondary;
+  
+  .empty-icon {
+    width: $spacing-16;
+    height: $spacing-16;
+    opacity: 0.5;
+  }
+}
+
+// Utility classes
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.visually-hidden {
+  @extend .sr-only;
+}
+
+// Text alignment utilities
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+// RTL overrides
+[dir="rtl"] {
+  .text-left { text-align: right; }
+  .text-right { text-align: left; }
+}
+
+// Spacing utilities
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: $spacing-1; }
+.mt-2 { margin-top: $spacing-2; }
+.mt-3 { margin-top: $spacing-3; }
+.mt-4 { margin-top: $spacing-4; }
+.mt-6 { margin-top: $spacing-6; }
+.mt-8 { margin-top: $spacing-8; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: $spacing-1; }
+.mb-2 { margin-bottom: $spacing-2; }
+.mb-3 { margin-bottom: $spacing-3; }
+.mb-4 { margin-bottom: $spacing-4; }
+.mb-6 { margin-bottom: $spacing-6; }
+.mb-8 { margin-bottom: $spacing-8; }
+
+// Flex utilities
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-row { flex-direction: row; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-start { justify-content: flex-start; }
+.justify-end { justify-content: flex-end; }
+
+.gap-1 { gap: $spacing-1; }
+.gap-2 { gap: $spacing-2; }
+.gap-3 { gap: $spacing-3; }
+.gap-4 { gap: $spacing-4; }
+.gap-6 { gap: $spacing-6; }
+.gap-8 { gap: $spacing-8; }
+
+// Width utilities
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+.h-full { height: 100%; }
+.h-auto { height: auto; }
+
+// Scrollable areas
+.scrollable {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrollable-x {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrollable-y {
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}

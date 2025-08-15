@@ -1,24 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Dashboard } from './components/Dashboard/Dashboard';
+import { LanguageProvider } from './context/LanguageContext';
+import { ErrorProvider } from './context/ErrorContext';
+import { ErrorNotifications } from './components/ErrorNotifications/ErrorNotifications';
+import './i18n'; // Initialize i18n
+import './styles/main.scss'; // Import our base styles
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ErrorProvider>
+        <LanguageProvider>
+          <Dashboard />
+          <ErrorNotifications />
+        </LanguageProvider>
+      </ErrorProvider>
     </div>
   );
 }

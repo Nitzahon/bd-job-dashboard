@@ -1,0 +1,13 @@
+// ============================================================================
+// Transition Variables
+// ============================================================================
+
+$transition-fast: 0.15s ease-in-out;
+$transition-base: 0.25s ease-in-out;
+$transition-slow: 0.3s ease-in-out;
+
+:export {
+  TRANSITION_FAST: $transition-fast;
+  TRANSITION_BASE: $transition-base;
+  TRANSITION_SLOW: $transition-slow;
+}

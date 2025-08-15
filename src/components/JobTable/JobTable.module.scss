@@ -1,0 +1,184 @@
+@import '../../styles/ds/variables';
+@import '../../styles/ds/mixins';
+
+.root {
+  flex: 1;
+}
+
+.loadingSection {
+  flex: 1;
+}
+
+.loadingContent {
+  padding: $spacing-8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-lg;
+  color: $color-text-secondary;
+  text-align: center;
+}
+
+.tableContainer {
+  background: $color-bg-primary;
+  border-radius: $border-radius-md;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $font-size-sm;
+}
+
+.tableHead {
+  background: $color-gray-800;
+}
+
+.tableHeader {
+  background: $color-gray-800;
+  color: $color-white;
+  padding: $spacing-4 $spacing-6;
+  text-align: left;
+  font-weight: $font-weight-medium;
+  border-bottom: 1px solid $color-gray-700;
+  
+  &:first-child {
+    padding-left: $spacing-6;
+  }
+  
+  &:last-child {
+    padding-right: $spacing-6;
+  }
+}
+
+.sortableHeader {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background: $color-gray-700;
+  }
+  
+  &:active {
+    background: $color-gray-600;
+  }
+}
+
+.tableRow {
+  border-bottom: 1px solid $color-border-primary;
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background: $color-bg-secondary;
+  }
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.tableCell {
+  padding: $spacing-2 $spacing-6;
+  vertical-align: middle;
+  
+  &:first-child {
+    padding-left: $spacing-6;
+  }
+  
+  &:last-child {
+    padding-right: $spacing-6;
+  }
+}
+
+// Priority Badge Styles
+.priorityBadge {
+  display: inline-block;
+  padding: $spacing-1 $spacing-3;
+  border-radius: $border-radius-base;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0.5px;
+}
+
+.priority--high {
+  background: rgba($color-error-600, 0.1);
+  color: $color-error-600;
+}
+
+.priority--regular {
+  background: rgba($color-info-500, 0.1);
+  color: $color-info-500;
+}
+
+// Progress Bar Styles
+.progressContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $spacing-1;
+  width: 100%;
+}
+
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background: $color-bg-tertiary;
+  border-radius: $border-radius-full;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: $border-radius-full;
+  transition: width 0.3s ease;
+}
+
+.progress--pending {
+  background: $color-warning-500;
+}
+
+.progress--inQueue {
+  background: #a855f7;
+}
+
+.progress--running {
+  background: $color-info-500;
+}
+
+.progress--completed {
+  background: $color-success-500;
+}
+
+.progress--failed {
+  background: $color-error-500;
+}
+
+.progress--stopped {
+  background: $color-gray-400;
+}
+
+.progressText {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+  text-align: left;
+  align-self: flex-start;
+}
+
+// Action Buttons
+.actionButtons {
+  display: flex;
+  gap: $spacing-2;
+}
+
+// Empty State
+.emptyState {
+  padding: $spacing-8;
+  text-align: center;
+  color: $color-text-secondary;
+  font-style: italic;
+}

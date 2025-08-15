@@ -1,0 +1,70 @@
+@import '../../styles/ds/variables';
+@import '../../styles/ds/mixins';
+
+.root {
+  margin-bottom: $spacing-2;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-4;
+  flex-wrap: wrap;
+
+  @include respond-to('tablet') {
+    flex-wrap: nowrap;
+    gap: $spacing-6;
+  }
+}
+
+.title {
+  @include heading-2;
+  margin: 0;
+  flex: 1;
+  min-width: 0; // Allow text to truncate if needed
+}
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: $spacing-4;
+  flex-wrap: wrap;
+  flex-shrink: 0; // Prevent controls from shrinking
+
+  @include respond-to('tablet') {
+    flex-wrap: nowrap;
+    gap: $spacing-6;
+  }
+}
+
+.search {
+  min-width: 200px;
+  
+  @include respond-to('mobile') {
+    min-width: 150px;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: $spacing-3;
+  align-items: center;
+}
+
+.languageToggle {
+  font-weight: $font-weight-semibold;
+  min-width: 48px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  flex-wrap: wrap;
+
+  @include respond-to('mobile') {
+    flex-wrap: nowrap;
+  }
+}

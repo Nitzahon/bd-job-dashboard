@@ -1,0 +1,96 @@
+@import '../../../styles/ds/variables';
+@import '../../../styles/ds/mixins';
+
+// ============================================================================
+// Header Component Styles
+// ============================================================================
+
+.root {
+  margin: 0;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+  color: $color-text-primary;
+  
+  // Size variants
+  &.header--h1 {
+    @include heading-1;
+  }
+  
+  &.header--h2 {
+    @include heading-2;
+  }
+  
+  &.header--h3 {
+    @include heading-3;
+  }
+  
+  &.header--h4 {
+    @include heading-4;
+  }
+  
+  &.header--h5 {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-medium;
+    line-height: $line-height-normal;
+  }
+  
+  &.header--h6 {
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    line-height: $line-height-normal;
+  }
+  
+  // Color variants
+  &.color--primary {
+    color: $color-text-primary;
+  }
+  
+  &.color--secondary {
+    color: $color-text-secondary;
+  }
+  
+  &.color--inverse {
+    color: $color-text-inverse;
+  }
+  
+  &.gradient {
+    background: linear-gradient(135deg, $color-primary-500 0%, $color-secondary-500 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  
+  // Alignment variants
+  &.align--left {
+    text-align: left;
+  }
+  
+  &.align--center {
+    text-align: center;
+  }
+  
+  &.align--right {
+    text-align: right;
+  }
+  
+  // Truncate variant
+  &.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+// Responsive adjustments
+@include respond-to('mobile') {
+  .root {
+    &.header--h1 {
+      font-size: $font-size-2xl;
+    }
+    
+    &.header--h2 {
+      font-size: $font-size-xl;
+    }
+  }
+}

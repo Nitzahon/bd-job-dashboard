@@ -1,0 +1,25 @@
+// ============================================================================
+// Component Size Variables
+// ============================================================================
+
+// Button Heights
+$button-height-sm: 2rem;    // 32px
+$button-height-base: 2.5rem; // 40px
+$button-height-lg: 3rem;    // 48px
+
+// Input Heights
+$input-height-sm: 2rem;     // 32px
+$input-height-base: 2.5rem; // 40px
+$input-height-lg: 3rem;     // 48px
+
+:export {
+  // Button Heights
+  BUTTON_HEIGHT_SM: $button-height-sm;
+  BUTTON_HEIGHT_BASE: $button-height-base;
+  BUTTON_HEIGHT_LG: $button-height-lg;
+
+  // Input Heights
+  INPUT_HEIGHT_SM: $input-height-sm;
+  INPUT_HEIGHT_BASE: $input-height-base;
+  INPUT_HEIGHT_LG: $input-height-lg;
+}
